@@ -171,7 +171,7 @@ while not endConditions():
 
 	print()
 	if roll == 6:
-		print('You anger your mastadon with your questions, and it sits on you. Roll a d6. On a 6, you never emerge.')
+		print('You anger your mastodon with your questions, and it sits on you. Roll a d6. On a 6, you never emerge.')
 		if rolld6() == 6:
 			sitDeath = True
 			break
@@ -195,8 +195,8 @@ while not endConditions():
 	# Clarity check
 	if event['confusion'] > 0:
 		print()
-		wait('You gained Confusion. Press any key to roll three d6.')
-		rolls = [rolld6(False) for _ in range(3)]
+		wait('You gained Confusion. Roll three d6. If they are all the same, you experience a feverish moment of dire clarity. Press any key to continue.')
+		rolls = [rolld6(verbose=False) for _ in range(3)]
 		print(f'You rolled: {rolls[0]} {rolls[1]} {rolls[2]}')
 		if rolls[0] == rolls[1] == rolls[2]:
 			clarity = True
@@ -213,6 +213,7 @@ print('--- GAME OVER! ---')
 if sitDeath:
 	print('You never emerge from under the mastodon.')
 elif clarity:
+	print('A FEVERISH MOMENT OF DIRE CLARITY')
 	print('You finally decipher what the mastodon was trying to tell you. You live the rest of your life in a state of blissful enlightenment, in harmony with your new friend. You\'re also a vegan now.')
 else:
 	if confusion >= maxScore:
@@ -220,7 +221,7 @@ else:
 	elif damages >= maxScore:
 		print('You lose all your money and your livelihood is destroyed, reduced to gigantic footprints in the ashes. The mastodon abandons you in search of someone else to inconvenience.')
 	else:
-		print('You decide that mastodons are not for you. You slip away into the night with the last of your remaining savings, faking your death. Perhaps you\'ll build a giganting pillowfort. Or collect tumblers. Something quiet.')
+		print('You decide that mastodons are not for you. You slip away into the night with the last of your remaining savings, faking your death. Perhaps you\'ll build a gigantic pillowfort. Or collect tumblers. Something quiet.')
 
 print()
 print(f'You survived {roundNum} rounds and achieved these scores:')
